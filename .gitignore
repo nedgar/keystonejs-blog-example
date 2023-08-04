@@ -1,0 +1,11 @@
+# Mac
+**/.DS_Store
+
+# JS / TS
+node_modules/
+
+# Keystone
+.keystone/
+keystone.db
+schema.graphql
+schema.prisma

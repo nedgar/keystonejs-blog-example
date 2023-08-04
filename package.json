@@ -1,0 +1,17 @@
+{
+  "name": "keystone-learning",
+  "version": "0.1.0",
+  "main": "index.js",
+  "license": "MIT",
+  "engines": {
+    "node": "16 || 18"
+  },
+  "dependencies": {
+    "@keystone-6/auth": "^7.0.2",
+    "@keystone-6/core": "^5.4.0",
+    "@keystone-6/fields-document": "^8.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "typescript": "^5.1.6"
+  }
+}
