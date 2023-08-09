@@ -1,12 +1,11 @@
-# Mac
-**/.DS_Store
-
-# JS / TS
-node_modules/
-
-# Keystone
+.DS_Store
+.env
+.env.docker
+.git
+*.log
 .keystone/
 keystone.db
 keystone.db-journal
+node_modules/
 schema.graphql
 schema.prisma

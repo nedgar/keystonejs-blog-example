@@ -1,7 +1,7 @@
 import { config, list } from "@keystone-6/core";
 import { allowAll } from "@keystone-6/core/access";
 import { password, relationship, select, text, timestamp } from "@keystone-6/core/fields";
-import { document } from '@keystone-6/fields-document';
+import { document } from "@keystone-6/fields-document";
 
 import { withAuth, session } from "./auth";
 
@@ -48,27 +48,30 @@ const lists = {
         formatting: true,
         links: true,
         dividers: true,
-        layouts: [
-          [1, 1],
-          [1, 1, 1],
-          [2, 1],
-          [1, 2],
-          [1, 2, 1],
-        ],
+        // layouts: [
+        //   [1, 1],
+        //   [1, 1, 1],
+        //   [2, 1],
+        //   [1, 2],
+        //   [1, 2, 1],
+        // ],
       }),
     },
   }),
 };
 
+const { DATABASE_URL = "file:./keystone.db" } = process.env;
+console.log("DATABASE_URL:", DATABASE_URL);
+
 export default config(
   withAuth({
     db: {
       provider: "sqlite",
-      url: "file:./keystone.db",
+      url: DATABASE_URL,
     },
     lists,
     session,
-    ui: {
+    ui: { 
       isAccessAllowed: (context) => !!context.session?.data,
     },
   })
