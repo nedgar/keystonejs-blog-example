@@ -20,7 +20,8 @@ WORKDIR /myapp
 
 COPY package.json yarn.lock ./
 RUN yarn install --include=dev
-RUN du -md 4 . | sort -nr | head -n 25
+RUN yarn keystone telemetry disable
+RUN du -m -d 4 . | sort -nr | head -n 25
 
 # Build the app
 FROM deps as build
@@ -29,7 +30,6 @@ WORKDIR /myapp
 
 COPY . .
 ENV DATABASE_URL=file:/keystone.db
-RUN yarn keystone telemetry disable
 RUN yarn build
 RUN yarn keystone prisma migrate dev -n init
 
@@ -46,4 +46,4 @@ RUN echo "#!/bin/sh\nset -x\nsqlite3 \$DATABASE_URL" > /usr/local/bin/database-c
 
 RUN echo "env:" && env
 
-ENTRYPOINT [ "yarn", "keystone", "start", "--with-migrations" ]
+ENTRYPOINT [ "yarn", "keystone", "start" ]

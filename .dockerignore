@@ -6,6 +6,7 @@
 .keystone/
 keystone.db
 keystone.db-journal
+migrations/
 node_modules/
 schema.graphql
 schema.prisma
